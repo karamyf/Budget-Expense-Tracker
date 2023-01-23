@@ -48,19 +48,23 @@ const HomePage = () => {
     },
     {
       title: "Actions",
+      className: "actions",
       render: (text, record) => (
         <div>
           <EditOutlined
+            className="btn-black"
             onClick={() => {
               setEditable(record);
               setShowModal(true);
             }}
           />
           <DeleteOutlined
-            className="mx-2"
-            onClick={() => {
-              handleDelete(record);
-            }}
+          className="btn-black"
+          onClick={() => {
+          if(window.confirm("Are you sure you want to delete?")){
+          handleDelete(record);
+          }
+          }}
           />
         </div>
       ),
@@ -111,6 +115,8 @@ const HomePage = () => {
       refresh();
     }
   };
+  //generating a random number for reference
+  const randomNumber = Math.floor(Math.random() * 1000) + 1;
 
   // form handling
   const handleSubmit = async (values) => {
@@ -178,13 +184,14 @@ const HomePage = () => {
         </div>
         <div className="switch-icons">
           <UnorderedListOutlined
-            className={`mx-2 ${
+            className={`mx-2 sw-list ${
               viewData === "table" ? "active-icon" : "inactive-icon"
             }`}
             onClick={() => setViewData("table")}
+          
           />
           <AreaChartOutlined
-            className={`mx-2 ${
+            className={`mx-2 sw-chart ${
               viewData === "analytics" ? "active-icon" : "inactive-icon"
             }`}
             onClick={() => setViewData("analytics")}
@@ -212,6 +219,7 @@ const HomePage = () => {
         onCancel={() => setShowModal(false)}
         footer={false}
       >
+        
         <Form
           layout="vertical"
           onFinish={handleSubmit}
@@ -240,10 +248,10 @@ const HomePage = () => {
             </Select>
           </Form.Item>
           <Form.Item label="Date" name="date">
-            <Input type="date" />
+            <Input  defaultValue={moment().format("YYYY-MM-DD")}  initialValues={moment().format("YYYY-MM-DD")} type="date" />
           </Form.Item>
-          <Form.Item label="Refrence" name="refrence">
-            <Input type="text" />
+          <Form.Item label="Reference" name="reference">
+          <Input type="text" defaultValue={randomNumber} initialValues={randomNumber} />
           </Form.Item>
           <Form.Item label="Description" name="description">
             <Input type="text" />

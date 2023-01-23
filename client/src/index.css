@@ -35,10 +35,11 @@ body {
 /* antd icons */
 
 .switch-icons {
-  border: 1px solid rgba(0, 0, 0, 0.677);
+  border: 1px #393E46;
   border-radius: 5px;
   padding: 10px 15px;
 }
+
 
 .anticon svg {
   font-size: 20px;
@@ -46,10 +47,10 @@ body {
 }
 
 .active-icon {
-  color: black;
+  color: #393E46;
 }
 .inactive-icon {
-  color: gray;
+  color: #393E46;
 }
 
 /* Add some styling to the table */
@@ -83,6 +84,17 @@ label, input {
   display: block;
   margin-bottom: 0.5em;
 }
+.ant-table-pagination.ant-pagination {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link {
+
+  background-color: #393E46;
+}
 
 /* Add some styling to the buttons */
 button {
@@ -92,7 +104,12 @@ button {
   border: none;
   cursor: pointer;
 }
-
+.ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #393E46;
+}
 /* Add some hover effects to the buttons */
 button:hover {
   background-color: #3e8e41;
@@ -105,8 +122,8 @@ button:hover {
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   position: relative;
   color: white;
-  background-color: #000;
-  border: 1px solid #000000;
+  background-color: #393E46;
+  border: 1px solid #393E46;
   border-radius: 15px;
   transition: all .3s cubic-bezier(.645,.045,.355,1);
 }
@@ -133,7 +150,7 @@ button:hover {
 .switch-icons {
   border: 1px solid rgba(0, 0, 0, 0.677);
   border-radius: 15px;
-  background-color: black;
+  background-color: #393E46;
 
 }
 
@@ -172,3 +189,20 @@ button:hover {
   box-shadow: 0px 0px 10px #3e8e41;
 }
 
+.btn-#393E46 .anticon svg{
+  color:#393E46
+}
+
+.actions{
+
+  background-color: #393E46;
+}
+.actions:hover{
+  color:white;
+  background-color: #393E46!important;
+}
+.ant-table-container table>thead>tr:first-child th:last-child {
+  border-top-right-radius: 2px;
+  background-color: #393E46;
+  color:white;
+}
