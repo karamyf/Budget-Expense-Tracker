@@ -1,0 +1,174 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  height: 100vh;
+}
+
+.resgister-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+/* transection page */
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  box-shadow: 0 0 3px gray;
+}
+/* transection page */
+
+/* antd icons */
+
+.switch-icons {
+  border: 1px solid rgba(0, 0, 0, 0.677);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.anticon svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.active-icon {
+  color: black;
+}
+.inactive-icon {
+  color: gray;
+}
+
+/* Add some styling to the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+/* Add some styling to the table headers */
+th {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5em;
+  text-align: left;
+}
+
+/* Add some styling to the table cells */
+td {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+}
+
+/* Add some styling to the form */
+form {
+  margin-top: 1em;
+}
+
+/* Add some spacing to the form label and input */
+label, input {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* Add some styling to the buttons */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+}
+
+/* Add some hover effects to the buttons */
+button:hover {
+  background-color: #3e8e41;
+}
+
+/* Add some spacing to the analytics component */
+.analytics {
+  margin-top: 2em;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  position: relative;
+  color: white;
+  background-color: #000;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector:hover{
+  background-color: #4caf50;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector:focus{
+  background-color: #4caf50;
+}
+
+.anticon svg {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+.anticon svg:hover {
+
+  color: #4caf50;
+}
+.anticon svg:focus {
+
+  color: #4caf50!important;
+}
+.switch-icons {
+  border: 1px solid rgba(0, 0, 0, 0.677);
+  border-radius: 15px;
+  background-color: black;
+
+}
+
+.btn-logout {
+  background-color: #a70000; /* Red color */
+  color: #fff; /* White text */
+  padding: 10px 20px; /* Add some padding */
+  border-radius: 5px; /* Add rounded corners */
+  font-size: 16px; /* Increase font size */
+  border: none; /* Remove border */
+  cursor: pointer; /* Add cursor pointer */
+}
+
+/* Add hover effect */
+.btn-logout:hover {
+  background-color: #651010; /* Darker red color */
+}
+
+.btn-addnew {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-addnew:hover {
+  background-color: #3e8e41;
+  box-shadow: 0px 0px 10px #3e8e41;
+}
+
