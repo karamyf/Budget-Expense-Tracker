@@ -46,7 +46,7 @@ const Analytics = ({ allTransaction }) => {
     (totalExpenseTurnover / totalTurnover) * 100;
   return (
     <>
-      <div className="row m-3 center-div">
+      <div className="row m-3 mx-auto d-flex align-items-center">
         <div className="col-md-4">
           <div className="card">
             <div className="card-header">
