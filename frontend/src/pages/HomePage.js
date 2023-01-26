@@ -43,10 +43,6 @@ const HomePage = () => {
       dataIndex: "category",
     },
     {
-      title: "Reference",
-      dataIndex: "refrence",
-    },
-    {
       title: "Actions",
       className: "actions",
       render: (text, record) => (
@@ -249,9 +245,6 @@ const HomePage = () => {
           </Form.Item>
           <Form.Item label="Date" name="date">
             <Input type="date" />
-          </Form.Item>
-          <Form.Item label="Reference" name="reference">
-          <Input type="text" />
           </Form.Item>
           <Form.Item label="Description" name="description">
             <Input type="text" />
