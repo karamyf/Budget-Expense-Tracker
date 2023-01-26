@@ -231,3 +231,14 @@ margin-bottom: 20px;
 .m-3 {
   justify-content: center!important;
 }
+
+.card{
+  margin-bottom: 5px;
+}
+
+.anticon-check-circle path {
+  fill: #4caf50;
+}
+.anticon-check path{
+  fill: #4caf50;
+}
