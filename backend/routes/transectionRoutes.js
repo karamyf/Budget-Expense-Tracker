@@ -4,6 +4,7 @@ const {
   getAllTransaction,
   editTransaction,
   deleteTransaction,
+  searchTransaction,
 } = require("../controllers/transectionCtrl");
 
 //router object
@@ -19,5 +20,7 @@ router.post("/delete-transection", deleteTransaction);
 
 //get transections
 router.post("/get-transection", getAllTransaction);
+
+
 
 module.exports = router;

@@ -44,6 +44,7 @@ const HomePage = () => {
     },
     {
       title: "Actions",
+      key: "action",
       className: "actions",
       render: (text, record) => (
         <div>
@@ -97,6 +98,25 @@ const HomePage = () => {
     getAllTransactions();
   }, [frequency, selectedDate, type]);
 
+
+//search bar handler
+  const filterContent = (allTransaction, searchTerm) => {
+    const result = allTransaction.filter(
+      (transection) =>
+      transection.category.toLowerCase().includes(searchTerm)
+    );
+    setAllTransaction(result);
+  };
+
+
+  const handleTextSearch = (e) => {
+    console.log(e.currentTarget.value);
+    const searchTerm = e.currentTarget.value.toLowerCase();
+    filterContent(allTransaction, searchTerm);
+  };
+
+
+
   //delete handler
   const handleDelete = async (record) => {
     try {
@@ -145,7 +165,10 @@ const HomePage = () => {
       refresh();
     }
   };
+  
 
+
+  
   return (
     <Layout>
       {loading && <Spinner />}
@@ -166,6 +189,14 @@ const HomePage = () => {
           )}
         </div>
         <div>
+          <h3>Search</h3>
+          <input
+              className="form-control"
+              type="search"
+              placeholder="Search"
+              name="searchTerm"
+              onChange={handleTextSearch}
+            ></input>
           <h6>Transaction Type</h6>
           <Select value={type} onChange={(values) => setType(values)}>
             <Select.Option value="all">ALL</Select.Option>
