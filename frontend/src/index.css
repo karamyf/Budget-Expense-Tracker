@@ -206,3 +206,20 @@ button:hover {
   background-color: #393E46;
   color:white;
 }
+
+.bg-light {
+  background-color: #393e46!important;
+}
+a.navbar-brand{
+  color:white;
+}
+p.nav-link{
+  color: white;
+}
+.navbar{
+margin-bottom: 20px;
+}
+
+.center-div {
+  margin: auto;
+}

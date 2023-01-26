@@ -46,7 +46,7 @@ const Analytics = ({ allTransaction }) => {
     (totalExpenseTurnover / totalTurnover) * 100;
   return (
     <>
-      <div className="row m-3">
+      <div className="row m-3 center-div">
         <div className="col-md-4">
           <div className="card">
             <div className="card-header">
@@ -100,7 +100,7 @@ const Analytics = ({ allTransaction }) => {
           </div>
         </div>
       </div>
-      <div className="row mt-3">
+      <div className="row mt-3 center-div">
         <div className="col-md-4">
           <h4>Income History</h4>
           {categories.map((category) => {
