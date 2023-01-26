@@ -22,7 +22,7 @@ Clone the repository by running
 ```bash
 git clone https://github.com/karamyf/Budget-Expense-Tracker.git
 ```
-Install the necessary packages in both the main repo and the client's by running
+Install the necessary packages in both frontend and backend by running
 ```bash
 npm install
 ```
