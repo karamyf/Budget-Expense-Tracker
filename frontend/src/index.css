@@ -47,23 +47,28 @@ body {
   cursor: pointer;
 }
 .unorderedlist{
-  padding: 10px 15px;
+
   border-radius: 13px 0px 0px 13px;
 }
 .unorderedlist:hover{
   background-color: #4caf50;
 }
-
+.anticon-area-chart{
+  padding:20px;
+}
+.anticon-unordered-list{
+  padding:20px;
+}
 
 
 .chart{
-  padding: 10px 15px;
+
   border-radius: 0px 13px 13px 0px;
 }
-
-.unorderedlist:focus{
-  background-color:white;
+.chart:hover{
+  background-color: #4caf50;
 }
+
 
 
 /* Add some styling to the table */
@@ -181,6 +186,8 @@ button:hover {
 .active-icon .unorderedlist{
   background-color: #4caf50;
 }
+
+
 
 
 .btn-logout {
