@@ -105,8 +105,30 @@ const HomePage = () => {
     getAllTransactions();
   }, [frequency, selectedDate, type]);
 
+// VIEWING DATA OF FAVORITES
 
+/*
+  const [favorites, setFavorites] = useState([]);
 
+  useEffect(() => {
+      const getFavorites = async () => {
+        try {
+          const user = JSON.parse(localStorage.getItem("user"));
+          setLoading(true);
+          const res = await axios.post("/transection/get-favorites", {
+            userid: user._id,
+          });
+          setLoading(false);
+          setFavorites(res.data);
+          console.log(res.data);
+        } catch (error) {
+          console.log(error);
+          message.error("There is an issue with getting the favorites");
+        }
+      };
+      getFavorites();
+    }, []);
+  */
 
   const handleAddToFavorites = async (record) => {
     try {
