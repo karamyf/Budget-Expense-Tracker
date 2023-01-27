@@ -112,7 +112,7 @@ const HomePage = () => {
     try {
         setLoading(true);
         const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post("/transection/add-to-favorites", {
+        await axios.post("/transections/add-to-favorites", {
 
           userId: user._id,
           transactionId: record._id
