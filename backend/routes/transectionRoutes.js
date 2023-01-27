@@ -4,7 +4,7 @@ const {
   getAllTransaction,
   editTransaction,
   deleteTransaction,
-  searchTransaction,
+  addFavoriteTransaction,
 } = require("../controllers/transectionCtrl");
 
 //router object
@@ -18,9 +18,11 @@ router.post("/edit-transection", editTransaction);
 //Delete transection POST MEthod
 router.post("/delete-transection", deleteTransaction);
 
-//get transections
+//get transactions
 router.post("/get-transection", getAllTransaction);
 
+//add transaction to fav
+router.post("/add-to-favorites", addFavoriteTransaction);
 
 
 module.exports = router;

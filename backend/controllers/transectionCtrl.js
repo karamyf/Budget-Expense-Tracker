@@ -60,9 +60,26 @@ const addTransaction = async (req, res) => {
   }
 };
 
+const addFavoriteTransaction = async (req, res) => {
+  try {
+    // find the transaction by its id
+    const transaction = await transectionModel.findById(req.body.transactionId);
+    // update the favorite field to true
+    transaction.favorite = true;
+    // save the transaction
+    await transaction.save();
+    res.status(200).send("Transaction added to favorites");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+
 module.exports = {
   getAllTransaction,
   addTransaction,
   editTransaction,
   deleteTransaction,
+  addFavoriteTransaction,
 };

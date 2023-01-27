@@ -5,6 +5,7 @@ import {
   AreaChartOutlined,
   EditOutlined,
   DeleteOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
@@ -63,6 +64,12 @@ const HomePage = () => {
               }
             }}
           />
+          <StarOutlined
+            className="btn-black"
+            onClick={() => {
+              handleAddToFavorites(record);
+            }}
+          />
         </div>
       ),
     },
@@ -97,6 +104,28 @@ const HomePage = () => {
     };
     getAllTransactions();
   }, [frequency, selectedDate, type]);
+
+
+
+
+  const handleAddToFavorites = async (record) => {
+    try {
+        setLoading(true);
+        const user = JSON.parse(localStorage.getItem("user"));
+        await axios.post("/transection/add-to-favorites", {
+
+          userId: user._id,
+          transactionId: record._id
+        });
+        setLoading(false);
+        message.success("Transaction added to favorites!");
+    } catch (error) {
+        setLoading(false);
+        message.error("There was an error adding the transaction to favorites. Please try again later.");
+    }
+};
+
+
 
 
   //search bar handler
