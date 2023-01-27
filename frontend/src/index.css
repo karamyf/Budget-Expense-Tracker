@@ -50,6 +50,10 @@ body {
   padding: 10px 15px;
   border-radius: 13px 0px 0px 13px;
 }
+.unorderedlist:hover{
+  background-color: #4caf50;
+}
+
 
 
 .chart{
@@ -154,13 +158,12 @@ button:hover {
 }
 
 
-.unorderedlist.active-icon, .chart.active-icon {
-  background-color: red!important;
+.unorderedlist:focus-within {
+  background-color: #4caf50;
 }
 
-.unorderedlist:hover .switch-icons 
-  {
-  color:red;
+.chart:focus-within {
+  background-color: #4caf50;
 }
 
 .anticon svg:focus {
@@ -173,6 +176,12 @@ button:hover {
   background-color: #393E46;
 
 }
+
+
+.active-icon .unorderedlist{
+  background-color: #4caf50;
+}
+
 
 .btn-logout {
   background-color: #a70000; /* Red color */
@@ -283,3 +292,4 @@ margin-bottom: 20px;
 .inactive-icon {
   color: green!important;
 }
+

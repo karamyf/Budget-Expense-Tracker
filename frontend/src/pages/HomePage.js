@@ -219,13 +219,13 @@ const HomePage = () => {
           )}
         </div>
         <div className="switch-icons">
-          <div className="unorderedlist">
+          <div className="unorderedlist" onClick={() => setViewData("table")}>
             <UnorderedListOutlined
               className={`mx-2 ${viewData === "table" ? "active-icon" : "inactive-icon"}`}
               onClick={() => setViewData("table")}
             />
           </div>
-          <div className="chart">
+          <div className="chart" onClick={() => setViewData("analytics")}>
             <AreaChartOutlined
               className={`mx-2 ${viewData === "analytics" ? "active-icon" : "inactive-icon"}`}
               onClick={() => setViewData("analytics")}
