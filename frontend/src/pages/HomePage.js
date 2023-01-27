@@ -103,16 +103,31 @@ const HomePage = () => {
   const filterContent = (allTransaction, searchTerm) => {
     const result = allTransaction.filter(
       (transection) =>
-      transection.category.toLowerCase().includes(searchTerm)
+      transection.description.toLowerCase().includes(searchTerm)
     );
     setAllTransaction(result);
   };
 
 
-  const handleTextSearch = (e) => {
+  const handleTextSearch = async (e) => {
     console.log(e.currentTarget.value);
     const searchTerm = e.currentTarget.value.toLowerCase();
-    filterContent(allTransaction, searchTerm);
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+      setLoading(true);
+      const res = await axios.post("/transections/get-transection", {
+        userid: user._id,
+        frequency,
+        selectedDate,
+        type,
+      });
+      setLoading(false);
+      setAllTransaction(res.data);
+      filterContent(res.data, searchTerm);
+    } catch (error) {
+      console.log(error);
+      message.error("There is an issue with the Transaction");
+    }
   };
 
 
@@ -189,14 +204,7 @@ const HomePage = () => {
           )}
         </div>
         <div>
-          <h3>Search</h3>
-          <input
-              className="form-control"
-              type="search"
-              placeholder="Search"
-              name="searchTerm"
-              onChange={handleTextSearch}
-            ></input>
+          
           <h6>Transaction Type</h6>
           <Select value={type} onChange={(values) => setType(values)}>
             <Select.Option value="all">ALL</Select.Option>
@@ -226,6 +234,16 @@ const HomePage = () => {
           />
         </div>
         <div>
+          <input
+              className="form-control"
+              type="search"
+              placeholder="Search by Reference"
+              name="searchTerm"
+              onChange={handleTextSearch}
+            ></input>
+          </div>
+        <div>
+          
           <button
             className="btn-addnew"
             onClick={() => setShowModal(true)}
@@ -233,6 +251,7 @@ const HomePage = () => {
             Add
           </button>
         </div>
+        
       </div>
       <div className="content">
         {viewData === "table" ? (
@@ -241,6 +260,7 @@ const HomePage = () => {
           <Analytics allTransaction={allTransaction} />
         )}
       </div>
+      
       <Modal
         title={editable ? "Edit Transaction" : "Add Transaction"}
         open={showModal}
@@ -280,6 +300,7 @@ const HomePage = () => {
           <Form.Item label="Description" name="description">
             <Input type="text" />
           </Form.Item>
+          
           <div className="d-flex justify-content-end">
             <button type="submit" className="btn btn-primary">
               {" "}
