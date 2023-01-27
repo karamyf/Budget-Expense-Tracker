@@ -56,12 +56,12 @@ const HomePage = () => {
             }}
           />
           <DeleteOutlined
-          className="btn-black"
-          onClick={() => {
-          if(window.confirm("Are you sure you want to delete?")){
-          handleDelete(record);
-          }
-          }}
+            className="btn-black"
+            onClick={() => {
+              if (window.confirm("Are you sure you want to delete?")) {
+                handleDelete(record);
+              }
+            }}
           />
         </div>
       ),
@@ -90,7 +90,7 @@ const HomePage = () => {
         setAllTransaction(res.data);
         console.log(res.data);
       } catch (error) {
-        
+
         console.log(error);
         message.error("There is an issue with the Transaction");
       }
@@ -99,11 +99,11 @@ const HomePage = () => {
   }, [frequency, selectedDate, type]);
 
 
-//search bar handler
+  //search bar handler
   const filterContent = (allTransaction, searchTerm) => {
     const result = allTransaction.filter(
       (transection) =>
-      transection.description.toLowerCase().includes(searchTerm)
+        transection.description.toLowerCase().includes(searchTerm)
     );
     setAllTransaction(result);
   };
@@ -180,10 +180,10 @@ const HomePage = () => {
       refresh();
     }
   };
-  
 
 
-  
+
+
   return (
     <Layout>
       {loading && <Spinner />}
@@ -204,7 +204,7 @@ const HomePage = () => {
           )}
         </div>
         <div>
-          
+
           <h6>Transaction Type</h6>
           <Select value={type} onChange={(values) => setType(values)}>
             <Select.Option value="all">ALL</Select.Option>
@@ -219,31 +219,31 @@ const HomePage = () => {
           )}
         </div>
         <div className="switch-icons">
-          <UnorderedListOutlined
-            className={`mx-2 sw-list ${
-              viewData === "table" ? "active-icon" : "inactive-icon"
-            }`}
-            onClick={() => setViewData("table")}
-          
-          />
-          <AreaChartOutlined
-            className={`mx-2 sw-chart ${
-              viewData === "analytics" ? "active-icon" : "inactive-icon"
-            }`}
-            onClick={() => setViewData("analytics")}
-          />
+          <div className="unorderedlist">
+            <UnorderedListOutlined
+              className={`mx-2 ${viewData === "table" ? "active-icon" : "inactive-icon"}`}
+              onClick={() => setViewData("table")}
+            />
+          </div>
+          <div className="chart">
+            <AreaChartOutlined
+              className={`mx-2 ${viewData === "analytics" ? "active-icon" : "inactive-icon"}`}
+              onClick={() => setViewData("analytics")}
+            />
+          </div>
+
         </div>
         <div>
           <input
-              className="form-control"
-              type="search"
-              placeholder="Search by Reference"
-              name="searchTerm"
-              onChange={handleTextSearch}
-            ></input>
-          </div>
+            className="form-control"
+            type="search"
+            placeholder="Search by description"
+            name="searchTerm"
+            onChange={handleTextSearch}
+          ></input>
+        </div>
         <div>
-          
+
           <button
             className="btn-addnew"
             onClick={() => setShowModal(true)}
@@ -251,7 +251,7 @@ const HomePage = () => {
             Add
           </button>
         </div>
-        
+
       </div>
       <div className="content">
         {viewData === "table" ? (
@@ -260,14 +260,14 @@ const HomePage = () => {
           <Analytics allTransaction={allTransaction} />
         )}
       </div>
-      
+
       <Modal
         title={editable ? "Edit Transaction" : "Add Transaction"}
         open={showModal}
         onCancel={() => setShowModal(false)}
         footer={false}
       >
-        
+
         <Form
           layout="vertical"
           onFinish={handleSubmit}
@@ -300,7 +300,7 @@ const HomePage = () => {
           <Form.Item label="Description" name="description">
             <Input type="text" />
           </Form.Item>
-          
+
           <div className="d-flex justify-content-end">
             <button type="submit" className="btn btn-primary">
               {" "}

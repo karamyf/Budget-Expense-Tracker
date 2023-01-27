@@ -35,9 +35,10 @@ body {
 /* antd icons */
 
 .switch-icons {
+  display: flex;
   border: 1px #393E46;
   border-radius: 5px;
-  padding: 10px 15px;
+
 }
 
 
@@ -45,13 +46,21 @@ body {
   font-size: 20px;
   cursor: pointer;
 }
+.unorderedlist{
+  padding: 10px 15px;
+  border-radius: 13px 0px 0px 13px;
+}
 
-.active-icon {
-  color: #393E46;
+
+.chart{
+  padding: 10px 15px;
+  border-radius: 0px 13px 13px 0px;
 }
-.inactive-icon {
-  color: #393E46;
+
+.unorderedlist:focus{
+  background-color:white;
 }
+
 
 /* Add some styling to the table */
 table {
@@ -143,6 +152,17 @@ button:hover {
 
   color: #4caf50;
 }
+
+
+.unorderedlist.active-icon, .chart.active-icon {
+  background-color: red!important;
+}
+
+.unorderedlist:hover .switch-icons 
+  {
+  color:red;
+}
+
 .anticon svg:focus {
 
   color: #4caf50!important;
@@ -198,7 +218,7 @@ button:hover {
   background-color: #393E46;
 }
 .actions:hover{
-  color:white;
+
   background-color: #393E46!important;
 }
 .ant-table-container table>thead>tr:first-child th:last-child {
@@ -241,4 +261,25 @@ margin-bottom: 20px;
 }
 .anticon-check path{
   fill: #4caf50;
+}
+
+.form-control{
+  border: solid;
+  border-color: #393e46;
+}
+
+
+.switch-icons:focus .unorderedlist{
+  background-color:red!important;
+}
+
+.switch-icons :focus  {
+  color: red!important;
+}
+
+.active-icon {
+  color: white!important;
+}
+.inactive-icon {
+  color: green!important;
 }
