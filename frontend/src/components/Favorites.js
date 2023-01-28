@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 const Favorites = ({ allTransaction }) => {
     const [transactions, setTransactions] = useState([]);
