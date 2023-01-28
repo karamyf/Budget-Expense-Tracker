@@ -56,16 +56,23 @@ body {
 .anticon-area-chart{
   padding:20px;
 }
+.anticon-star, .anticon-delete, .anticon-edit {
+  padding:20px;
+}
+
+.btn-black{
+  padding:5px;
+}
 .anticon-unordered-list{
   padding:20px;
 }
 
 
-.chart{
+.favorites{
 
   border-radius: 0px 13px 13px 0px;
 }
-.chart:hover{
+.chart:hover, .favorites:hover{
   background-color: #4caf50;
 }
 
@@ -167,7 +174,7 @@ button:hover {
   background-color: #4caf50;
 }
 
-.chart:focus-within {
+.chart:focus-within, .favorites:focus-within {
   background-color: #4caf50;
 }
 

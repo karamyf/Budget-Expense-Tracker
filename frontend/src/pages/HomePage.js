@@ -6,6 +6,7 @@ import {
   EditOutlined,
   DeleteOutlined,
   StarOutlined,
+  StarFilled,
 } from "@ant-design/icons";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
@@ -111,32 +112,32 @@ const HomePage = () => {
   //add to favorites handler
   const handleAddToFavorites = async (record) => {
     try {
-        setLoading(true);
-        const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post("/transections/add-to-favorites", {
+      setLoading(true);
+      const user = JSON.parse(localStorage.getItem("user"));
+      await axios.post("/transections/add-to-favorites", {
 
-          userId: user._id,
-          transactionId: record._id
-        });
-        setLoading(false);
-        message.success("Transaction added to favorites!");
-        const displayTransactions = {"user" : user._id, "has added": record._id}
-        console.log(displayTransactions);
-        
+        userId: user._id,
+        transactionId: record._id
+      });
+      setLoading(false);
+      message.success("Transaction added to favorites!");
+      const displayTransactions = { "user": user._id, "has added": record._id }
+      console.log(displayTransactions);
 
-        // Get the current transactions list from local storage
-        let transactionsList = JSON.parse(localStorage.getItem("transactionsList")) || [];
-        // Add the new transaction to the list
-        transactionsList.push(record);
-        // Save the updated transactions list to local storage
-        localStorage.setItem("transactionsList", JSON.stringify(transactionsList));
+
+      // Get the current transactions list from local storage
+      let transactionsList = JSON.parse(localStorage.getItem("transactionsList")) || [];
+      // Add the new transaction to the list
+      transactionsList.push(record);
+      // Save the updated transactions list to local storage
+      localStorage.setItem("transactionsList", JSON.stringify(transactionsList));
 
 
     } catch (error) {
-        setLoading(false);
-        message.error("There was an error adding the transaction to favorites. Please try again later.");
+      setLoading(false);
+      message.error("There was an error adding the transaction to favorites. Please try again later.");
     }
-};
+  };
 
 
 
@@ -230,7 +231,7 @@ const HomePage = () => {
   return (
 
 
-    
+
     <Layout>
       {loading && <Spinner />}
       <div className="filters">
@@ -277,8 +278,14 @@ const HomePage = () => {
               onClick={() => setViewData("analytics")}
             />
           </div>
-
+          <div className="favorites" onClick={() => setViewData("favorites")}>
+          <StarFilled
+              className={`mx-2 ${viewData === "favorites" ? "active-icon" : "inactive-icon"}`}
+              onClick={() => setViewData("favorites")}
+            />
+          </div>
         </div>
+
         <div>
           <input
             className="form-control"
@@ -302,12 +309,13 @@ const HomePage = () => {
       <div className="content">
         {viewData === "table" ? (
           <Table columns={columns} dataSource={allTransaction} />
-        ) : (
-          /*<Analytics allTransaction={allTransaction} />
-          ,*/
-          <Favorites allTransaction={allTransaction}/>
-        )}
+        ) : viewData === "analytics" ? (
+          <Analytics allTransaction={allTransaction} />
+        ) : viewData === "favorites" ? (
+          <Favorites />
+        ) : null}
       </div>
+
 
       <Modal
         title={editable ? "Edit Transaction" : "Add Transaction"}
