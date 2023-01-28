@@ -12,6 +12,8 @@ import axios from "axios";
 import Spinner from "./../components/Spinner";
 import moment from "moment";
 import Analytics from "../components/Analytics";
+import Favorites from "../components/Favorites";
+
 const { RangePicker } = DatePicker;
 
 const HomePage = () => {
@@ -105,31 +107,8 @@ const HomePage = () => {
     getAllTransactions();
   }, [frequency, selectedDate, type]);
 
-// VIEWING DATA OF FAVORITES
 
-/*
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-      const getFavorites = async () => {
-        try {
-          const user = JSON.parse(localStorage.getItem("user"));
-          setLoading(true);
-          const res = await axios.post("/transection/get-favorites", {
-            userid: user._id,
-          });
-          setLoading(false);
-          setFavorites(res.data);
-          console.log(res.data);
-        } catch (error) {
-          console.log(error);
-          message.error("There is an issue with getting the favorites");
-        }
-      };
-      getFavorites();
-    }, []);
-  */
-
+  //add to favorites handler
   const handleAddToFavorites = async (record) => {
     try {
         setLoading(true);
@@ -141,11 +120,24 @@ const HomePage = () => {
         });
         setLoading(false);
         message.success("Transaction added to favorites!");
+        const displayTransactions = {"user" : user._id, "has added": record._id}
+        console.log(displayTransactions);
+        
+
+        // Get the current transactions list from local storage
+        let transactionsList = JSON.parse(localStorage.getItem("transactionsList")) || [];
+        // Add the new transaction to the list
+        transactionsList.push(record);
+        // Save the updated transactions list to local storage
+        localStorage.setItem("transactionsList", JSON.stringify(transactionsList));
+
+
     } catch (error) {
         setLoading(false);
         message.error("There was an error adding the transaction to favorites. Please try again later.");
     }
 };
+
 
 
 
@@ -236,6 +228,9 @@ const HomePage = () => {
 
 
   return (
+
+
+    
     <Layout>
       {loading && <Spinner />}
       <div className="filters">
@@ -308,7 +303,9 @@ const HomePage = () => {
         {viewData === "table" ? (
           <Table columns={columns} dataSource={allTransaction} />
         ) : (
-          <Analytics allTransaction={allTransaction} />
+          /*<Analytics allTransaction={allTransaction} />
+          ,*/
+          <Favorites allTransaction={allTransaction}/>
         )}
       </div>
 
