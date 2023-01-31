@@ -7,16 +7,15 @@ dotenv.config();
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await userModel.findOne({ email }); // Find user by email
-    if (!user) { // If user not found
+    const user = await userModel.findOne({ email });
+    if (!user) { 
       return res.status(404).send("User Not Found");
     }
-    // Compare plain text password with hashed password
     const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch){ // If passwords don't match
+    if(!isMatch){
       return res.status(400).send("Invalid Credentials");
     }
-    // Generate token
+
     const token = jwt.sign({
       userId: user._id
     }, process.env.SECRET_TOKEN, {
@@ -47,7 +46,13 @@ const loginController = async (req, res) => {
 //Register 
 const registerController = async (req, res) => {
   try {
-     // Hash the password
+
+    const existingUser = await userModel.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res.status(400).send("Email already exists");
+    }
+
+     // Hash
      const salt = await bcrypt.genSalt(10);
      req.body.password = await bcrypt.hash(req.body.password, salt);
      

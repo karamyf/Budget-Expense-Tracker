@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
-import Spinner from "./../components/Spinner";
+//import Spinner from "./../components/Spinner";
 import moment from "moment";
 import Analytics from "../components/Analytics";
 import Favorites from "../components/Favorites";
@@ -233,7 +233,7 @@ const HomePage = () => {
 
 
     <Layout>
-      {loading && <Spinner />}
+      {loading}
       <div className="filters">
         <div>
           <h6>Date</h6>
