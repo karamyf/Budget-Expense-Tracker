@@ -4,7 +4,12 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const connectDb = require("./config/connectDb");
+<<<<<<< Updated upstream:server.js
 const path = require('path');
+=======
+const path = require("./config/connectDb")
+
+>>>>>>> Stashed changes:backend/server.js
 // config dot env file
 dotenv.config();
 
@@ -32,6 +37,14 @@ app.use("/api/v1/users", require("./routes/userRoute"));
 app.use("/api/v1/transections", require("./routes/transectionRoutes"));
 //port
 const PORT = 8080 || process.env.PORT;
+
+//static files
+app.use(express.static(path.join(__dirname, './frontend/build')))
+
+app.get('*', function(req,res){
+  res.sendFile(path.join(__dirname,"./frontend/build/index.html"));
+
+});
 
 //listen server
 app.listen(PORT, () => {
