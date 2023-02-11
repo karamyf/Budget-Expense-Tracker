@@ -14,7 +14,7 @@ const Analytics = ({ allTransaction }) => {
     "tax",
   ];
 
-  // total transection
+  // total transaction
   const totalTransaction = allTransaction.length;
   const totalIncomeTransactions = allTransaction.filter(
     (transection) => transection.type === "income"
